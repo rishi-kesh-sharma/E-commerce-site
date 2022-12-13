@@ -12,8 +12,9 @@ import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
-
-const NewProduct = ({ history }) => {
+import { useHistory } from "react-router-dom";
+const NewProduct = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -96,8 +97,7 @@ const NewProduct = ({ history }) => {
           <form
             className="createProductForm"
             encType="multipart/form-data"
-            onSubmit={createProductSubmitHandler}
-          >
+            onSubmit={createProductSubmitHandler}>
             <h1>Create Product</h1>
 
             <div>
@@ -128,8 +128,7 @@ const NewProduct = ({ history }) => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
-                rows="1"
-              ></textarea>
+                rows="1"></textarea>
             </div>
 
             <div>
@@ -173,8 +172,7 @@ const NewProduct = ({ history }) => {
             <Button
               id="createProductBtn"
               type="submit"
-              disabled={loading ? true : false}
-            >
+              disabled={loading ? true : false}>
               Create
             </Button>
           </form>

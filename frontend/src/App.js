@@ -46,10 +46,10 @@ import NotFound from "./component/layout/Not Found/NotFound";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  const [stripeApiKey, setStripeApiKey] = useState(true);
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get("http:localhost:4000/api/v1/stripeapikey");
 
     setStripeApiKey(data.stripeApiKey);
   }
@@ -62,7 +62,6 @@ function App() {
     });
 
     store.dispatch(loadUser());
-
     getStripeApiKey();
   }, []);
 
@@ -74,11 +73,11 @@ function App() {
 
       {isAuthenticated && <UserOptions user={user} />}
 
-      {stripeApiKey && (
-        <Elements stripe={loadStripe(stripeApiKey)}>
-          <ProtectedRoute exact path="/process/payment" component={Payment} />
-        </Elements>
-      )}
+      {/* {stripeApiKey && ( */}
+      {/* <Elements stripe={loadStripe(stripeApiKey)}> */}
+      <ProtectedRoute exact path="/process/payment" component={Payment} />
+      {/* </Elements> */}
+      {/* )} */}
 
       <Switch>
         <Route exact path="/" component={Home} />
@@ -190,5 +189,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

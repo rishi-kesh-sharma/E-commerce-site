@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
+import { useSelector } from "react-redux";
 import logo from "../../../images/logo.png";
 
 const options = {
@@ -13,10 +14,12 @@ const options = {
   link2Text: "Products",
   link3Text: "Contact",
   link4Text: "About",
+  link5Text: "Sign In",
   link1Url: "/",
   link2Url: "/products",
   link3Url: "/contact",
   link4Url: "/about",
+  link5Url: "/login",
   link1Size: "1.3vmax",
   link1Color: "rgba(35, 35, 35,0.8)",
   nav1justifyContent: "flex-end",
@@ -36,7 +39,18 @@ const options = {
 };
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
+  return (
+    <div>
+      <ReactNavbar {...options} />
+      {!isAuthenticated && (
+        <div className="login-btn">
+          <a href="/login">Login</a>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Header;

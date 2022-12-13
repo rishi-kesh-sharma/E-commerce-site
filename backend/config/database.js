@@ -2,11 +2,14 @@ const mongoose = require("mongoose");
 
 const connectDatabase = () => {
   mongoose
-    .connect(process.env.DB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    })
+    .connect(
+      "mongodb+srv://rishi:rishi@cluster0.ettfyru.mongodb.net/?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+      }
+    )
     .then((data) => {
       console.log(`Mongodb connected with server: ${data.connection.host}`);
     });

@@ -38,6 +38,7 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 
+const baseURL = "http://127.0.0.1:4000";
 // Login
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -53,6 +54,7 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
+    console.log(error.response);
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
   }
 };
@@ -64,7 +66,11 @@ export const register = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.post(`/api/v1/register`, userData, config);
+    const { data } = await axios.post(
+      `${baseURL}/api/v1/register`,
+      userData,
+      config
+    );
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
