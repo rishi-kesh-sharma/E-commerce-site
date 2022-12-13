@@ -36,5 +36,5 @@ CLOUDINARY_API_SECRET
 
 ## Author
 
-**Instagram** Click [Here](https://www.instagram.com/ri_c_sharma/) **@meAbhiSingh**
+**Instagram** Click [Here](https://www.instagram.com/ri_c_sharma/) **@meRishiKeshSharma**
 **LinkedIn** Click [Here](https://www.linkedin.com/in/rishi-sharma-579685193/) **@meRishiSharma**
